@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body {
+	background: #eee;
+}
+
+.form-card {
+	width: 25em;
+	margin: 10px auto;
+}
+
+.setup-list-item {
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+}
+
+.setup-list-detail {
+	flex: 1 1 0;
+}
+
+.setup-name {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.setup-description {
+	margin: 0 0 1rem 0;
+}
+
+.setup-list-action {
+	display: flex;
+	flex-direction: column;
+}
+
+.setup-price {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: .5rem;
+	align-self: flex-end;
+}
+
+.setup-list-item img {
+	width: 150px;
+	box-shadow: 0 3px 6px rgb(0 0 0/ 16%), 0 3px 6px rgb(0 0 0/ 23%);
+	margin-right: 2rem;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<div class="card product">
+			<h:form id="form">
+				<p:dataView var="setup" value="#{setupBean.setups}" rows="12"
+					paginator="true" rowsPerPageTemplate="6,12,16"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+					<p:dataViewGridItem>
+						<div class="product-grid-item card border-1">
+							<div class="product-grid-item-top">
+								<div>
+									<i class="pi pi-tag product-category-icon" /> <span
+										class="product-category">#{product.category}</span>
+								</div>
+								<span
+									class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+							</div>
+							<div class="product-grid-item-content">
+								<p:graphicImage name="images/product/#{product.image}"
+									library="demo" />
+								<div class="product-name">#{product.name}</div>
+								<div class="product-description">#{product.description}</div>
+								<p:rating readonly="true" value="#{product.rating}" />
+							</div>
+							<div class="product-grid-item-bottom">
+								<h:outputText value="#{product.price}"
+									styleClass="product-price">
+									<f:convertNumber currencySymbol="$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="Add To Cart"
+									icon="pi pi-shopping-cart"
+									disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+								</p:commandButton>
+							</div>
+						</div>
+					</p:dataViewGridItem>
+
+					<p:dataViewListItem>
+						<div class="setup-list-item">
+							<p:graphicImage name="setup.jpg" library="images" />
+							<div class="setup-list-detail">
+								<div class="setup-name">#{setup.name}</div>
+								<div class="setup-description">#{setup.description}</div>
+								<p:rating value="0" />
+							</div>
+							<div class="setup-list-action">
+								<h:outputText value="#{setup.price}" styleClass="setup-price">
+									<f:convertNumber currencySymbol="R$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="Detail"
+									icon="pi pi-search">
+								</p:commandButton>
+
+							</div>
+						</div>
+					</p:dataViewListItem>
+				</p:dataView>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>
+
